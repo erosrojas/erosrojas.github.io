@@ -19,7 +19,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 r = np.arange(0, 2, 0.01)
-theta = 2 * np.pi * r
+theta = 4 * np.pi * r
 fig, ax = plt.subplots(
   subplot_kw = {'projection': 'polar'} 
 )
