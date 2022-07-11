@@ -1,9 +1,35 @@
 ---
-title: "Post With Code"
-author: "Harlow Malloc"
-date: "2022-07-09"
-categories: [news, code, analysis]
+title: "Test Post"
+author: "Eros Rojas"
+date: "2022-07-10"
+categories: [Python]
 image: "image.jpg"
+
+format:
+  html:
+    code-fold: show
+    code-summary: "Show the code"
+    code-tools: true
+    code-overflow: wrap
 ---
 
 This is a post with executable code.
+
+```{python}
+#| label: fig-polar
+#| fig-cap: "A line plot on a polar axis"
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+r = np.arange(0, 2, 0.01)
+theta = 4 * np.pi * r
+fig, ax = plt.subplots(
+  subplot_kw = {'projection': 'polar'} 
+)
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+```

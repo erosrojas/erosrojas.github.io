@@ -1,0 +1,11 @@
+{
+  "hash": "1b51f261ab57e678bff35b4492522ec8",
+  "result": {
+    "markdown": "---\ntitle: \"Test Post\"\nauthor: \"Eros Rojas\"\ndate: \"2022-07-10\"\ncategories: [Python]\nimage: \"image.jpg\"\n\nformat:\n  html:\n    code-fold: show\n    code-summary: \"Show the code\"\n    code-tools: true\n    code-overflow: wrap\n---\n\nThis is a post with executable code.\n\n::: {.cell execution_count=1}\n``` {.python .cell-code}\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 4 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'} \n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n```\n\n::: {.cell-output .cell-output-display}\n![A line plot on a polar axis](index_files/figure-html/fig-polar-output-1.png){#fig-polar}\n:::\n:::\n\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

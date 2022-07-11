@@ -2,7 +2,7 @@
 title: "Welcome To My Blog"
 author: "Tristan O'Malley"
 date: "2022-07-06"
-categories: [news]
+categories: [DSCI-100]
 ---
 
 This is the first post in a Quarto blog. Welcome!
