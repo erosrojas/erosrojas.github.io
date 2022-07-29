@@ -4,16 +4,16 @@ image: profile.jpg
 about:
   template: jolla
   links:
-    - icon: twitter
-      text: Twitter
-      href: https://twitter.com
+    - icon: send
+      text: E-mail
+      href: mailto:eros.rojasv@gmail.com
     - icon: linkedin
       text: LinkedIn
-      href: https://linkedin.com
+      href: https://www.linkedin.com/in/eros-rojas/
     - icon: github
       text: Github
-      href: https://github.com
+      href: https://github.com/erosrojas
 
 ---
 
-About this blog
+I am a 3rd year undergraduate student studying Mathematics and Data Science at UBC. 
