@@ -1,12 +1,22 @@
 ---
-title: "Welcome To My Blog"
-author: "Tristan O'Malley"
-date: "2022-07-06"
-categories: [DSCI-100]
+title: "First Post"
+author: "Eros Rojas"
+date: "2022-07-28"
+categories: []
+image: "open.jpg"
+
+format:
+  html:
+    code-fold: show
+    code-summary: "Show the code"
+    code-tools: true
+    code-overflow: wrap
 ---
 
-This is the first post in a Quarto blog. Welcome!
+This is the first post on my blog! <br><br>
 
-![](thumbnail.jpg)
+I am creating this blog as a way to put myself and all of my projects out there, in hopes that it may help somebody in some way. <br><br>
 
-Since this post doesn't specify an explicit `image`, the first image in the post will be used in the listing page of posts.
+For now, here is a photo of Nice, France that I found on Google.<br><br>
+
+![](nice-france.jpg)

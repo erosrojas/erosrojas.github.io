@@ -1,7 +1,7 @@
 ---
 title: "Test Post"
 author: "Eros Rojas"
-date: "2022-07-10"
+date: "2022-07-30"
 categories: [Python]
 image: "image.jpg"
 
@@ -13,7 +13,7 @@ format:
     code-overflow: wrap
 ---
 
-This is a post with executable code.
+This is a post with executable code that is in progress.
 
 ```{python}
 #| label: fig-polar
