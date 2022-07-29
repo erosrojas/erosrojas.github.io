@@ -1,7 +1,9 @@
 ---
-title: "Site currently under construction. Come back later. "
+title: "Eros Rojas"
 format:
   html:
     code-fold: false
 jupyter: python3
 ---
+
+Site currently under construction. Come back later. 
