@@ -1,8 +1,8 @@
 ---
-title: "Test Post"
+title: "My Old DSCI-100 Project"
 author: "Eros Rojas"
 date: "2022-07-30"
-categories: [Python]
+categories: [R, DSCI-100]
 image: "image.jpg"
 
 format:
@@ -13,30 +13,16 @@ format:
     code-overflow: wrap
 ---
 
-This is a post with executable code that is in progress.
+## **Breaking down my old DSCI-100 project**
+TLDR: Do not assume anything of your data. Often times you will be wrong.
 
-```{python}
-#| label: fig-polar
-#| fig-cap: "A line plot on a polar axis"
+<br>
+![](data-pic.jpg)
+<br>
 
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
+Back when I took DSCI-100, I was very new to the data science and statistical modeling world. I was vastly unaware of the absurd number of specialized algorithms created for basically any and all types of problems. 
 
-r = np.arange(0, 2, 0.01)
-theta = 4 * np.pi * r
-fig, ax = plt.subplots(
-  subplot_kw = {'projection': 'polar'} 
-)
-ax.plot(theta, r)
-ax.set_rticks([0.5, 1, 1.5, 2])
-ax.grid(True)
-plt.show()
-```
+This was one of my first full data science reports, and as a result of my previously limited knowledge, there are numerous aspects of the report that are misleading, or flat out misrepresentative of reality. I wish to make this post as a point of progression to see how much I have learned in the past two years, and to be able to recognize what types of mistakes data science beginners generally make. Think of it like a video game 'remaster', except the difference being that nobody asked for it.
 
-```{r}
-# install.packages("reticulate")
-# library(reticulate)
+Below you will find my DSCI-100 final report, but with the added bonus of italicized annotations alongside all of the questionable statements and pieces of code that are written. 
 
-mtcars
-```

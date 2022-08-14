@@ -9,7 +9,7 @@
 <meta name="author" content="Eros Rojas">
 <meta name="dcterms.date" content="2022-07-30">
 
-<title>Home - Test Post</title>
+<title>Home - My Old DSCI-100 Project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -160,9 +160,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <div class="quarto-title-block"><div><h1 class="title">Test Post</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+      <div class="quarto-title-block"><div><h1 class="title">My Old DSCI-100 Project</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
                                 <div class="quarto-categories">
-                <div class="quarto-category">Python</div>
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">DSCI-100</div>
               </div>
                   </div>
   </div>
@@ -197,81 +198,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<p>This is a post with executable code that is in progress.</p>
-<div class="cell">
-<details open="">
-<summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">2</span>, <span class="fl">0.01</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> <span class="dv">4</span> <span class="op">*</span> np.pi <span class="op">*</span> r</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  subplot_kw <span class="op">=</span> {<span class="st">'projection'</span>: <span class="st">'polar'</span>} </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>ax.plot(theta, r)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>ax.set_rticks([<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>])</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div id="fig-polar" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="index_files/figure-html/fig-polar-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 1: A line plot on a polar axis</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<details open="">
-<summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("reticulate")</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(reticulate)</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>mtcars</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>                     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
-Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
-Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
-Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
-Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
-Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
-Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
-Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
-Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
-Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
-Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
-Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
-Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
-Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
-Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
-Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
-Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
-Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
-Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
-Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
-Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
-Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
-Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
-AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
-Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
-Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
-Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
-Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
-Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
-Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
-Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
-Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
-Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
-</div>
-</div>
+<section id="breaking-down-my-old-dsci-100-project" class="level2">
+<h2 class="anchored" data-anchor-id="breaking-down-my-old-dsci-100-project"><strong>Breaking down my old DSCI-100 project</strong></h2>
+<p>TLDR: Do not assume anything of your data. Often times you will be wrong.</p>
+<p><br> <img src="data-pic.jpg" class="img-fluid"> <br></p>
+<p>Back when I took DSCI-100, I was very new to the data science and statistical modeling world. I was vastly unaware of the absurd number of specialized algorithms created for basically any and all types of problems.</p>
+<p>This was one of my first full data science reports, and as a result of my previously limited knowledge, there are numerous aspects of the report that are misleading, or flat out misrepresentative of reality. I wish to make this post as a point of progression to see how much I have learned in the past two years, and to be able to recognize what types of mistakes data science beginners generally make. Think of it like a video game ‘remaster’, except the difference being that nobody asked for it.</p>
+<p>Below you will find my DSCI-100 final report, but with the added bonus of italicized annotations alongside all of the questionable statements and pieces of code that are written.</p>
 
 
 <!-- -->
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -404,49 +342,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb4" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Test Post"</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Eros Rojas"</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2022-07-30"</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [Python]</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> "image.jpg"</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">    code-summary: "Show the code"</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-overflow: wrap</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>This is a post with executable code that is in progress.</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-polar</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "A line plot on a polar axis"</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">2</span>, <span class="fl">0.01</span>)</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> <span class="dv">4</span> <span class="op">*</span> np.pi <span class="op">*</span> r</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(</span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>  subplot_kw <span class="op">=</span> {<span class="st">'projection'</span>: <span class="st">'polar'</span>} </span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>ax.plot(theta, r)</span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>ax.set_rticks([<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>])</span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>)</span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("reticulate")</span></span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="co"># library(reticulate)</span></span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>mtcars</span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "My Old DSCI-100 Project"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Eros Rojas"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2022-07-30"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [R, DSCI-100]</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> "image.jpg"</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">    code-summary: "Show the code"</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-overflow: wrap</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Breaking down my old DSCI-100 project**</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>TLDR: Do not assume anything of your data. Often times you will be wrong.</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="al">![](data-pic.jpg)</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>Back when I took DSCI-100, I was very new to the data science and statistical modeling world. I was vastly unaware of the absurd number of specialized algorithms created for basically any and all types of problems. </span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>This was one of my first full data science reports, and as a result of my previously limited knowledge, there are numerous aspects of the report that are misleading, or flat out misrepresentative of reality. I wish to make this post as a point of progression to see how much I have learned in the past two years, and to be able to recognize what types of mistakes data science beginners generally make. Think of it like a video game 'remaster', except the difference being that nobody asked for it.</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>Below you will find my DSCI-100 final report, but with the added bonus of italicized annotations alongside all of the questionable statements and pieces of code that are written. </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

@@ -7,3 +7,31 @@ jupyter: python3
 ---
 
 Site currently under construction. Come back later. 
+
+This is a post with executable code that is in progress.
+
+```{python}
+#| label: fig-polar
+#| fig-cap: "A line plot on a polar axis"
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+r = np.arange(0, 2, 0.01)
+theta = 4 * np.pi * r
+fig, ax = plt.subplots(
+  subplot_kw = {'projection': 'polar'} 
+)
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+```
+
+```{r}
+# install.packages("reticulate")
+# library(reticulate)
+
+mtcars
+```
