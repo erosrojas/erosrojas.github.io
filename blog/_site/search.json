@@ -26,5 +26,12 @@
     "title": "First Post",
     "section": "",
     "text": "I am creating this blog as a way to put myself and all of my projects out there, in hopes that it may help somebody in some way. \nFor now, here is a photo of Nice, France that I found on Google."
+  },
+  {
+    "objectID": "posts/post-with-code/index.html#predicting-covid-19-transmission-risk",
+    "href": "posts/post-with-code/index.html#predicting-covid-19-transmission-risk",
+    "title": "My Old DSCI-100 Project",
+    "section": "Predicting COVID-19 Transmission Risk",
+    "text": "Predicting COVID-19 Transmission Risk\n\nIntroduction:\nWe plan to help out Billy, who has recently lost his job due to COVID-19 and is trying to find a job in another country. He prefers to move to a country that will be safer, with fewer new COVID cases.\nWe aim to help Billy answer the question: “How safe is it to move to country X?” by predicting the number of new_cases_per_million through KNN-Regression. A lower number indicates a safer country with lower transmission risk. We will use a categorical variable “risk level”, that we created ourselves, to more easily interpret the numerical output of our prediction.\nWe will use worldwide data collected over the past few months of the pandemic (Ritchie 2020). This dataset contains many variables, but we will use population density, stringency index (a composite measure of government COVID-19 response), GDP per capita (economic output per person), hospital beds per thousand, and life expectancy as predictors. We narrowed the data down to consider only current data (from September 1st 2020 onwards), to accurately model the current coronavirus situation. We will predict the number of new cases per million, using our designated predictor variables, to inform Billy’s decision."
   }
 ]

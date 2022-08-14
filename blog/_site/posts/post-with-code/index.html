@@ -205,10 +205,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Back when I took DSCI-100, I was very new to the data science and statistical modeling world. I was vastly unaware of the absurd number of specialized algorithms created for basically any and all types of problems.</p>
 <p>This was one of my first full data science reports, and as a result of my previously limited knowledge, there are numerous aspects of the report that are misleading, or flat out misrepresentative of reality. I wish to make this post as a point of progression to see how much I have learned in the past two years, and to be able to recognize what types of mistakes data science beginners generally make. Think of it like a video game ‘remaster’, except the difference being that nobody asked for it.</p>
 <p>Below you will find my DSCI-100 final report, but with the added bonus of italicized annotations alongside all of the questionable statements and pieces of code that are written.</p>
+<p><br> <br> <br></p>
+</section>
+<section id="predicting-covid-19-transmission-risk" class="level2">
+<h2 class="anchored" data-anchor-id="predicting-covid-19-transmission-risk"><strong>Predicting COVID-19 Transmission Risk</strong></h2>
+<section id="introduction" class="level5">
+<h5 class="anchored" data-anchor-id="introduction"><strong>Introduction:</strong></h5>
+<p>We plan to help out Billy, who has recently lost his job due to COVID-19 and is trying to find a job in another country. He prefers to move to a country that will be safer, with fewer new COVID cases.</p>
+<p>We aim to help Billy answer the question: “How safe is it to move to country X?” by predicting the number of new_cases_per_million through KNN-Regression. A lower number indicates a safer country with lower transmission risk. We will use a categorical variable “risk level”, that we created ourselves, to more easily interpret the numerical output of our prediction.</p>
+<p>We will use worldwide data collected over the past few months of the pandemic (<a href="https://ourworldindata.org/coronavirus-source-data">Ritchie 2020</a>). This dataset contains many variables, but we will use population density, stringency index (a composite measure of government COVID-19 response), GDP per capita (economic output per person), hospital beds per thousand, and life expectancy as predictors. We narrowed the data down to consider only current data (from September 1st 2020 onwards), to accurately model the current coronavirus situation. We will predict the number of new cases per million, using our designated predictor variables, to inform Billy’s decision.</p>
 
 
 <!-- -->
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -347,7 +357,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Eros Rojas"</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2022-07-30"</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [R, DSCI-100]</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> "image.jpg"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> "ancient.jpg"</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
@@ -368,7 +378,21 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>This was one of my first full data science reports, and as a result of my previously limited knowledge, there are numerous aspects of the report that are misleading, or flat out misrepresentative of reality. I wish to make this post as a point of progression to see how much I have learned in the past two years, and to be able to recognize what types of mistakes data science beginners generally make. Think of it like a video game 'remaster', except the difference being that nobody asked for it.</span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>Below you will find my DSCI-100 final report, but with the added bonus of italicized annotations alongside all of the questionable statements and pieces of code that are written. </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>Below you will find my DSCI-100 final report, but with the added bonus of italicized annotations alongside all of the questionable statements and pieces of code that are written. </span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Predicting COVID-19 Transmission Risk**</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="fu">##### **Introduction:**</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>We plan to help out Billy, who has recently lost his job due to COVID-19 and is trying to find a job in another country. He prefers to move to a country that will be safer, with fewer new COVID cases. </span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>We aim to help Billy answer the question: “How safe is it to move to country X?” by predicting the number of new_cases_per_million through KNN-Regression. A lower number indicates a safer country with lower transmission risk. We will use a categorical variable “risk level”, that we created ourselves, to more easily interpret the numerical output of our prediction. </span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>We will use worldwide data collected over the past few months of the pandemic (<span class="co">[</span><span class="ot">Ritchie 2020</span><span class="co">](https://ourworldindata.org/coronavirus-source-data)</span>). This dataset contains many variables, but we will use population density, stringency index (a composite measure of government COVID-19 response), GDP per capita (economic output per person), hospital beds per thousand, and life expectancy as predictors. We narrowed the data down to consider only current data (from September 1st 2020 onwards), to accurately model the current coronavirus situation. We will predict the number of new cases per million, using our designated predictor variables, to inform Billy’s decision.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
