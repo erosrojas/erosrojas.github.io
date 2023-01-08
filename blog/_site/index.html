@@ -144,7 +144,7 @@ ul.task-list{list-style: none;}
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="DSCI-100">DSCI-100 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R">R <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div><div class="category" data-category="DSCI-100">DSCI-100 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R">R <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
@@ -156,8 +156,53 @@ ul.task-list{list-style: none;}
 
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-title" data-direction="asc">
+          Title
+        </option>
+         <option value="listing-date-sort" data-direction="asc">
+          Date - Oldest
+        </option>
+         <option value="listing-date-sort" data-direction="desc">
+          Date - Newest
+        </option>
+         <option value="listing-author" data-direction="asc">
+          Author
+        </option>
+     </select>
+  </div>
+</div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="R,DSCI-100" data-listing-date-sort="1659164400000" data-listing-file-modified-sort="1660557727688" data-listing-reading-time-sort="3.36">
+<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1673215809464" data-listing-reading-time-sort="0">
+<div class="thumbnail">
+<a href="./posts/multicollinearity/index.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./posts/multicollinearity/index.html"></a></p>
+</div>
+<div class="body">
+<a href="./posts/multicollinearity/index.html">
+<h3 class="no-anchor listing-title">
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/multicollinearity/index.html"> </a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="R,DSCI-100" data-listing-date-sort="1659153600000" data-listing-file-modified-sort="1673216929831" data-listing-reading-time-sort="3.35">
 <div class="thumbnail">
 <p><a href="./posts/post-with-code/index.html"> <img src="./posts/post-with-code/ancient.jpg" class="thumnail-image"> </a></p>
 </div>
@@ -195,7 +240,7 @@ Eros Rojas
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="" data-listing-date-sort="1658991600000" data-listing-file-modified-sort="1659064727854" data-listing-reading-time-sort="0.25">
+<div class="quarto-post image-right" data-index="2" data-categories="" data-listing-date-sort="1658980800000" data-listing-file-modified-sort="1659064727854" data-listing-reading-time-sort="0.25">
 <div class="thumbnail">
 <p><a href="./posts/welcome/index.html"> <img src="./posts/welcome/open.jpg" class="thumnail-image"> </a></p>
 </div>

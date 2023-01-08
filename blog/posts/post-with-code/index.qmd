@@ -10,7 +10,7 @@ format:
     code-fold: show
     code-summary: "Show the code"
     code-tools: true
-    code-overflow: wrap
+    code-overflow: scroll
 ---
 
 ## **Breaking down my old DSCI-100 project**
@@ -41,35 +41,33 @@ We aim to help Billy answer the question: “How safe is it to move to country X
 We will use worldwide data collected over the past few months of the pandemic ([Ritchie 2020](https://ourworldindata.org/coronavirus-source-data)). This dataset contains many variables, but we will use population density, stringency index (a composite measure of government COVID-19 response), GDP per capita (economic output per person), hospital beds per thousand, and life expectancy as predictors. We narrowed the data down to consider only current data (from September 1st 2020 onwards), to accurately model the current coronavirus situation. We will predict the number of new cases per million, using our designated predictor variables, to inform Billy’s decision.
 
 
-```{r, results='hide', message=FALSE, echo=T, warning = FALSE}
+```{r, results='hide', message=FALSE, warning = FALSE}
 # installing 3rd party packages required for running this file
 install.packages("lubridate", repos = "http://cran.us.r-project.org")
 install.packages("GGally", repos = "http://cran.us.r-project.org")
 install.packages("reshape2", repos = "http://cran.us.r-project.org")
-install.packages("shiny", repos = "http://cran.us.r-project.org")
+#install.packages("shiny", repos = "http://cran.us.r-project.org")
 install.packages("repr", repos = "http://cran.us.r-project.org")
 
-# loading packages which run on DSCI server
+# loading installed packages
 library(tidyverse)
 library(tidymodels)
 library(repr)
-
-# loading installed packages
 library(lubridate)
 library(GGally)
 library(reshape2)
-library(shiny)
+#library(shiny)
 ```
 
 The data has been obtained from the ['Our World in Data,' Coronavirus Source Dataset](https://ourworldindata.org/coronavirus-source-data), which is collected in partnership with the University of Oxford and the Oxford Martin School, updated daily.
 
-```{r, collapse=TRUE, results="hold"}
+```{r, collapse = FALSE, results="hold"}
 # utilizng the github commit hash code in order to maintain the same running code throughout the lifespan of this project
 url <- "https://raw.githubusercontent.com/owid/covid-19-data/fb73a3759b6691dc9a6f880353a37e70cd7ceb92/public/data/owid-covid-data.csv"
 data <- read_csv(url, show_col_types = FALSE)
 
 # adding table title
-strong("Table 1: Raw data from 'Coronavirus Source Data'")
+#strong("Table 1: Raw data from 'Coronavirus Source Data'")
 head(data)
 ```
 
@@ -79,7 +77,7 @@ We restricted the observations to those taken past September 1st 2020 – to ens
 
 *<span style="color:#b30000">incomplete, will be back another day to finish</span>*
 
-```{r, collapse=TRUE, results="hold"}
+```{r, collapse = FALSE, results="hold"}
 # this is our exploratory data table, depicting our predictors of interest
 newdata <- data %>%
   select(location, date, total_cases, new_cases, new_cases_per_million ,new_cases_smoothed_per_million, stringency_index, population_density, gdp_per_capita, hospital_beds_per_thousand, life_expectancy) %>% 
@@ -88,6 +86,6 @@ newdata <- data %>%
   drop_na() # we are dropping our NA values due to the fact that we can not preform KNN regression on values which do not exist 
 
 # adding table title
-strong("Table 2: Preliminary data filtering")
+#strong("Table 2: Preliminary data filtering")
 head(newdata)
 ```
