@@ -1,0 +1,26 @@
+---
+title: "Multicollinearity: An Intuitive Example"
+author: "Eros Rojas"
+date: "2023-01-08"
+categories: [R, Statistics]
+image: "colinear.jpg"
+
+format:
+  html:
+    code-fold: show
+    code-summary: "Show the code"
+    code-tools: true
+    code-overflow: scroll
+---
+
+## **An intuitive visualization of collinearity**
+Visualized in 3 dimensions, with the help of plotly.
+
+<br>
+![](3d.jpg)
+<br>
+<br>
+
+### **Understanding what collinearity is:**
+
+As defined by [Wikipedia](https://en.wikipedia.org/wiki/Multicollinearity), "*multicollinearity (also collinearity) is a phenomenon in which one predictor variable in a multiple regression model can be linearly predicted from the others with a substantial degree of accuracy.*" Essentially, this means that 
