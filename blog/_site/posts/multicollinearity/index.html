@@ -204,11 +204,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><br> <img src="3d.jpg" class="img-fluid"> <br> <br></p>
 <section id="understanding-what-collinearity-is" class="level3">
 <h3 class="anchored" data-anchor-id="understanding-what-collinearity-is"><strong>Understanding what collinearity is:</strong></h3>
-<p>As defined by <a href="https://en.wikipedia.org/wiki/Multicollinearity">Wikipedia</a>, “<em>multicollinearity (also collinearity) is a phenomenon in which one predictor variable in a multiple regression model can be linearly predicted from the others with a substantial degree of accuracy.</em>” Essentially, this means that</p>
+<p>As defined by <a href="https://en.wikipedia.org/wiki/Multicollinearity">Wikipedia</a>, “<em>multicollinearity (also collinearity) is a phenomenon in which one predictor variable in a multiple regression model can be linearly predicted from the others with a substantial degree of accuracy.</em>” Essentially, this means that an input variable (or multiple variables) is highly correlated with another input variable, to the extent that their relationship is virtually linearly dependent. This can cause numerous issues with respect to the regression analysis including:</p>
+<ul>
+<li>
+Inflated standard error
+</li>
+<li>
+Non-unique solutions for the coefficients
+</li>
+<li>
+Uninterpretable/Unstable coefficients
+</li>
+</ul>
+<p>All of these issues will be explained in the following 3 sections. <br> <br></p>
+<section id="inflated-standard-error" class="level4">
+<h4 class="anchored" data-anchor-id="inflated-standard-error"><strong>Inflated standard error</strong></h4>
 
 
 <!-- -->
 
+</section>
 </section>
 </section>
 
@@ -368,7 +383,19 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">### **Understanding what collinearity is:**</span></span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>As defined by <span class="co">[</span><span class="ot">Wikipedia</span><span class="co">](https://en.wikipedia.org/wiki/Multicollinearity)</span>, "*multicollinearity (also collinearity) is a phenomenon in which one predictor variable in a multiple regression model can be linearly predicted from the others with a substantial degree of accuracy.*" Essentially, this means that </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>As defined by <span class="co">[</span><span class="ot">Wikipedia</span><span class="co">](https://en.wikipedia.org/wiki/Multicollinearity)</span>, "*multicollinearity (also collinearity) is a phenomenon in which one predictor variable in a multiple regression model can be linearly predicted from the others with a substantial degree of accuracy.*" Essentially, this means that an input variable (or multiple variables) is highly correlated with another input variable, to the extent that their relationship is virtually linearly dependent. This can cause numerous issues with respect to the regression analysis including: </span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;ul&gt;</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;li&gt;</span>Inflated standard error<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;li&gt;</span>Non-unique solutions for the coefficients<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;li&gt;</span>Uninterpretable/Unstable coefficients<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/ul&gt;</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>All of these issues will be explained in the following 3 sections.</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="fu">#### **Inflated standard error**</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

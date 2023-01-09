@@ -23,4 +23,18 @@ Visualized in 3 dimensions, with the help of plotly.
 
 ### **Understanding what collinearity is:**
 
-As defined by [Wikipedia](https://en.wikipedia.org/wiki/Multicollinearity), "*multicollinearity (also collinearity) is a phenomenon in which one predictor variable in a multiple regression model can be linearly predicted from the others with a substantial degree of accuracy.*" Essentially, this means that 
+As defined by [Wikipedia](https://en.wikipedia.org/wiki/Multicollinearity), "*multicollinearity (also collinearity) is a phenomenon in which one predictor variable in a multiple regression model can be linearly predicted from the others with a substantial degree of accuracy.*" Essentially, this means that an input variable (or multiple variables) is highly correlated with another input variable, to the extent that their relationship is virtually linearly dependent. This can cause numerous issues with respect to the regression analysis including: 
+
+<ul>
+    <li>Inflated standard error</li>
+    <li>Non-unique solutions for the coefficients</li>
+    <li>Uninterpretable/Unstable coefficients</li>
+</ul>
+
+All of these issues will be explained in the following 3 sections.
+<br>
+<br>
+
+#### **Inflated standard error:**
+
+
