@@ -39,7 +39,7 @@
     "href": "posts/multicollinearity/index.html",
     "title": "Multicollinearity: An Intuitive Example",
     "section": "",
-    "text": "Visualized in 3 dimensions, with the help of plotly.\n   \n\n\nAs defined by Wikipedia, “multicollinearity (also collinearity) is a phenomenon in which one predictor variable in a multiple regression model can be linearly predicted from the others with a substantial degree of accuracy.”"
+    "text": "Visualized in 3 dimensions, with the help of plotly.\n   \n\n\nAs defined by Wikipedia, “multicollinearity (also collinearity) is a phenomenon in which one predictor variable in a multiple regression model can be linearly predicted from the others with a substantial degree of accuracy.” Essentially, this means that"
   },
   {
     "objectID": "posts/multicollinearity/index.html#understanding-what-collinearity-is",
