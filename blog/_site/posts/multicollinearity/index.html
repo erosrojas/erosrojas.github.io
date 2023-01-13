@@ -119,6 +119,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -218,7 +219,16 @@ Uninterpretable/Unstable coefficients
 </ul>
 <p>All of these issues will be explained in the following 3 sections. <br> <br></p>
 <section id="inflated-standard-error" class="level4">
-<h4 class="anchored" data-anchor-id="inflated-standard-error"><strong>Inflated standard error</strong></h4>
+<h4 class="anchored" data-anchor-id="inflated-standard-error"><strong>Inflated standard error:</strong></h4>
+<p>The standard error of the coefficients of a linear model can be calculated as follows: <br> <br> Lets assume</p>
+<p><span class="math display">\[f(w) = ||Xw + \epsilon - \hat{y}||_2\]</span></p>
+<p>where <span class="math inline">\(\epsilon\)</span> represents the error terms which follow a normal distribution, such that <span class="math inline">\(\epsilon \sim N(0, \sigma^2)\)</span>. Since the standard linear model above has a fully differentiable and convex loss function, we can find a closed-form solution for its coefficients as</p>
+<p><span class="math display">\[w = (X^TX)^{-1}X^T\hat{y}\]</span></p>
+<p>Now that the coefficients are isolated, finding the variance should be quite straight forward. <span class="math display">\[\begin{align}
+\mathrm{Var}(w) &amp;= \mathrm{Var}\left((X^TX)^{-1}X^T \hat{y} \right) \\
+&amp;= (X^TX)^{−1}X^T \cdot \mathrm{Var}(\hat{y}) \cdot X(X^TX)^{−1} \\
+&amp;= \sigma^2 (X^T X)^{-1}
+\end{align}\]</span> <em>Note: <span class="math inline">\(\mathrm{Var}(\hat{y}) = \mathrm{Var}(\epsilon)\)</span> due to the fact that <span class="math inline">\(\hat{y} = Xw + \epsilon\)</span> and <span class="math inline">\(X\)</span> and <span class="math inline">\(w\)</span> inherently have a variance of 0</em>.</p>
 
 
 <!-- -->
@@ -395,7 +405,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;</span></span>
 <span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;</span></span>
 <span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="fu">#### **Inflated standard error**</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="fu">#### **Inflated standard error:**</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>The standard error of the coefficients of a linear model can be calculated as follows: </span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>Lets assume </span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>$$f(w) = ||Xw + \epsilon - \hat{y}||_2$$</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>where $\epsilon$ represents the error terms which follow a normal distribution, such that $\epsilon \sim N(0, \sigma^2)$. Since the standard linear model above has a fully differentiable and convex loss function, we can find a closed-form solution for its coefficients as</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>$$w = (X^TX)^{-1}X^T\hat{y}$$</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>Now that the coefficients are isolated, finding the variance should be quite straight forward.</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>\begin{align}</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>\mathrm{Var}(w) &amp;= \mathrm{Var}\left((X^TX)^{-1}X^T \hat{y} \right) <span class="sc">\\</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>&amp;= (X^TX)^{−1}X^T \cdot \mathrm{Var}(\hat{y}) \cdot X(X^TX)^{−1} <span class="sc">\\</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>&amp;= \sigma^2 (X^T X)^{-1}</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>\end{align}</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>*Note: $\mathrm{Var}(\hat{y}) = \mathrm{Var}(\epsilon)$ due to the fact that $\hat{y} = Xw + \epsilon$ and $X$ and $w$ inherently have a variance of 0*.</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

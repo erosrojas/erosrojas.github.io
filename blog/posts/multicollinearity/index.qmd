@@ -37,4 +37,19 @@ All of these issues will be explained in the following 3 sections.
 
 #### **Inflated standard error:**
 
+The standard error of the coefficients of a linear model can be calculated as follows: 
+<br>
+<br>
+Lets assume 
+$$f(w) = ||Xw + \epsilon - \hat{y}||_2$$
+where $\epsilon$ represents the error terms which follow a normal distribution, such that $\epsilon \sim N(0, \sigma^2)$. Since the standard linear model above has a fully differentiable and convex loss function, we can find a closed-form solution for its coefficients as
+$$w = (X^TX)^{-1}X^T\hat{y}$$
+Now that the coefficients are isolated, finding the variance should be quite straight forward.
+\begin{align}
+\mathrm{Var}(w) &= \mathrm{Var}\left((X^TX)^{-1}X^T \hat{y} \right) \\
+&= (X^TX)^{−1}X^T \cdot \mathrm{Var}(\hat{y}) \cdot X(X^TX)^{−1} \\
+&= \sigma^2 (X^T X)^{-1}
+\end{align}
+*Note: $\mathrm{Var}(\hat{y}) = \mathrm{Var}(\epsilon)$ due to the fact that $\hat{y} = Xw + \epsilon$ and $X$ and $w$ inherently have a variance of 0*.
+
 
