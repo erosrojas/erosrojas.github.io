@@ -220,15 +220,23 @@ Uninterpretable/Unstable coefficients
 <p>All of these issues will be explained in the following 3 sections. <br> <br></p>
 <section id="inflated-standard-error" class="level4">
 <h4 class="anchored" data-anchor-id="inflated-standard-error"><strong>Inflated standard error:</strong></h4>
-<p>The standard error of the coefficients of a linear model can be calculated as follows: <br> <br> Lets assume</p>
+<p>The standard error of the coefficients of a linear model can be calculated as follows: <br><br> Lets assume a linear model has the following loss function</p>
 <p><span class="math display">\[f(w) = ||Xw + \epsilon - \hat{y}||_2\]</span></p>
-<p>where <span class="math inline">\(\epsilon\)</span> represents the error terms which follow a normal distribution, such that <span class="math inline">\(\epsilon \sim N(0, \sigma^2)\)</span>. Since the standard linear model above has a fully differentiable and convex loss function, we can find a closed-form solution for its coefficients as</p>
+<p>where <span class="math inline">\(\epsilon\)</span> represents the error terms which follow a normal distribution, such that <span class="math inline">\(\epsilon \sim N(0, \sigma^2)\)</span>. Since the given loss function above is fully differentiable and convex, we can find a closed-form solution for its coefficients as</p>
 <p><span class="math display">\[w = (X^TX)^{-1}X^T\hat{y}\]</span></p>
 <p>Now that the coefficients are isolated, finding the variance should be quite straight forward. <span class="math display">\[\begin{align}
 \mathrm{Var}(w) &amp;= \mathrm{Var}\left((X^TX)^{-1}X^T \hat{y} \right) \\
 &amp;= (X^TX)^{−1}X^T \cdot \mathrm{Var}(\hat{y}) \cdot X(X^TX)^{−1} \\
 &amp;= \sigma^2 (X^T X)^{-1}
-\end{align}\]</span> <em>Note: <span class="math inline">\(\mathrm{Var}(\hat{y}) = \mathrm{Var}(\epsilon)\)</span> due to the fact that <span class="math inline">\(\hat{y} = Xw + \epsilon\)</span> and <span class="math inline">\(X\)</span> and <span class="math inline">\(w\)</span> inherently have a variance of 0</em>.</p>
+\end{align}\]</span> <em>Note: <span class="math inline">\(\mathrm{Var}(\hat{y}) = \mathrm{Var}(\epsilon)\)</span> due to the fact that <span class="math inline">\(\hat{y} = Xw + \epsilon\)</span>, and <span class="math inline">\(Xw\)</span> has a variance of 0 (since <span class="math inline">\(Xw\)</span> is not a random variable)</em>. <br><br> It is clear that <span class="math inline">\(X^T X\)</span> must be a square matrix, therefore, it can be diagonalized such that</p>
+<p><span class="math display">\[X^T X = PDP^{-1}\]</span></p>
+<p>where <span class="math inline">\(P\)</span> is an invertible matrix containing linearly independent eigenvectors of <span class="math inline">\(X^T X\)</span>, and <span class="math inline">\(D\)</span> is a diagonal matrix containing the eigenvalues of <span class="math inline">\(X^T X\)</span> (you can read more about matrix diagonalization <a href="https://www.statlect.com/matrix-algebra/matrix-diagonalization#:~:text=Matrix%20diagonalization%20is%20the%20process,Not%20all%20matrices%20are%20diagonalizable.">here</a>). Most notably, the product of the entries of <span class="math inline">\(D\)</span> (the eigenvalues) are equal to the determinant of <span class="math inline">\(D\)</span>. When multicollinearity is present, <span class="math inline">\(X^T X\)</span> becomes ‘nearly singular’ (a matrix which has a determinant very close to <span class="math inline">\(0\)</span>, and who’s columns are nearly linearly dependent. For reference, a non-singular matrix is linearly independent, and a singular matrix is linearly dependent and has a determinant of <span class="math inline">\(0\)</span>). In other words, this means that one or more of the eigenvalues of <span class="math inline">\(D\)</span> must be very close to <span class="math inline">\(0\)</span>, or in fact <span class="math inline">\(0\)</span>. Given the inverse of the diagonalized matrix above;</p>
+<p><span class="math display">\[(X^T X)^{-1} = PD^{-1}P^{-1}\]</span></p>
+<p>this means that with multicollinearity, <span class="math inline">\(D^{-1}\)</span> must have very large values. This is due to the fact that when the inverse of a matrix is taken, its determinant is essentially divided out from each element of the resulting matrix (this is an oversimplification, look into <a href="https://en.wikipedia.org/wiki/Adjugate_matrix">adjugate matrices</a> if you are interested). This causes <span class="math inline">\((X^T X)^{-1}\)</span> to subsequently also have very large values, which finally causes <span class="math inline">\(\mathrm{Var}(w)\)</span> to be very large. This shows why multicollinearity severely inflates the standard error of the coefficients. <br> <br></p>
+</section>
+<section id="non-unique-olutions" class="level4">
+<h4 class="anchored" data-anchor-id="non-unique-olutions"><strong>Non-unique olutions:</strong></h4>
+<p>Next</p>
 
 
 <!-- -->
@@ -408,20 +416,30 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="fu">#### **Inflated standard error:**</span></span>
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>The standard error of the coefficients of a linear model can be calculated as follows: </span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;</span></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;</span></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>Lets assume </span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>$$f(w) = ||Xw + \epsilon - \hat{y}||_2$$</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>where $\epsilon$ represents the error terms which follow a normal distribution, such that $\epsilon \sim N(0, \sigma^2)$. Since the standard linear model above has a fully differentiable and convex loss function, we can find a closed-form solution for its coefficients as</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>$$w = (X^TX)^{-1}X^T\hat{y}$$</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>Now that the coefficients are isolated, finding the variance should be quite straight forward.</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>\begin{align}</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>\mathrm{Var}(w) &amp;= \mathrm{Var}\left((X^TX)^{-1}X^T \hat{y} \right) <span class="sc">\\</span></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>&amp;= (X^TX)^{−1}X^T \cdot \mathrm{Var}(\hat{y}) \cdot X(X^TX)^{−1} <span class="sc">\\</span></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>&amp;= \sigma^2 (X^T X)^{-1}</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>\end{align}</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>*Note: $\mathrm{Var}(\hat{y}) = \mathrm{Var}(\epsilon)$ due to the fact that $\hat{y} = Xw + \epsilon$ and $X$ and $w$ inherently have a variance of 0*.</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;&lt;br&gt;</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>Lets assume a linear model has the following loss function</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>$$f(w) = ||Xw + \epsilon - \hat{y}||_2$$</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>where $\epsilon$ represents the error terms which follow a normal distribution, such that $\epsilon \sim N(0, \sigma^2)$. Since the given loss function above is fully differentiable and convex, we can find a closed-form solution for its coefficients as</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>$$w = (X^TX)^{-1}X^T\hat{y}$$</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>Now that the coefficients are isolated, finding the variance should be quite straight forward.</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>\begin{align}</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>\mathrm{Var}(w) &amp;= \mathrm{Var}\left((X^TX)^{-1}X^T \hat{y} \right) <span class="sc">\\</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>&amp;= (X^TX)^{−1}X^T \cdot \mathrm{Var}(\hat{y}) \cdot X(X^TX)^{−1} <span class="sc">\\</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>&amp;= \sigma^2 (X^T X)^{-1}</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>\end{align}</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>*Note: $\mathrm{Var}(\hat{y}) = \mathrm{Var}(\epsilon)$ due to the fact that $\hat{y} = Xw + \epsilon$, and $Xw$ has a variance of 0 (since $Xw$ is not a random variable)*.</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;&lt;br&gt;</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>It is clear that $X^T X$ must be a square matrix, therefore, it can be diagonalized such that </span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>$$X^T X = PDP^{-1}$$</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>where $P$ is an invertible matrix containing linearly independent eigenvectors of $X^T X$, and $D$ is a diagonal matrix containing the eigenvalues of $X^T X$ (you can read more about matrix diagonalization <span class="co">[</span><span class="ot">here</span><span class="co">](https://www.statlect.com/matrix-algebra/matrix-diagonalization#:~:text=Matrix%20diagonalization%20is%20the%20process,Not%20all%20matrices%20are%20diagonalizable.)</span>). Most notably, the product of the entries of $D$ (the eigenvalues) are equal to the determinant of $D$. When multicollinearity is present, $X^T X$ becomes 'nearly singular' (a matrix which has a determinant very close to $0$, and who's columns are nearly linearly dependent. For reference, a non-singular matrix is linearly independent, and a singular matrix is linearly dependent and has a determinant of $0$). In other words, this means that one or more of the eigenvalues of $D$ must be very close to $0$, or in fact $0$. Given the inverse of the diagonalized matrix above;</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>$$(X^T X)^{-1} = PD^{-1}P^{-1}$$</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>this means that with multicollinearity, $D^{-1}$ must have very large values. This is due to the fact that when the inverse of a matrix is taken, its determinant is essentially divided out from each element of the resulting matrix (this is an oversimplification, look into <span class="co">[</span><span class="ot">adjugate matrices</span><span class="co">](https://en.wikipedia.org/wiki/Adjugate_matrix)</span> if you are interested). This causes $(X^T X)^{-1}$ to subsequently also have very large values, which finally causes $\mathrm{Var}(w)$ to be very large. This shows why multicollinearity severely inflates the standard error of the coefficients.</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="fu">#### **Non-unique olutions:**</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>Next</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
