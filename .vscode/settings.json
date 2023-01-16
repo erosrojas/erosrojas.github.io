@@ -1,5 +1,9 @@
 {
     "cSpell.enableFiletypes": [
         "quarto"
+    ],
+    "cSpell.words": [
+        "collinearity",
+        "multicollinearity"
     ]
 }

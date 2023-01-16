@@ -23,12 +23,11 @@ Visualized in 3 dimensions, with the help of plotly.
 
 ### **Understanding what collinearity is:**
 
-As defined by <a href="https://en.wikipedia.org/wiki/Multicollinearity" target="_blank">Wikipedia</a>, "*multicollinearity (also collinearity) is a phenomenon in which one predictor variable in a multiple regression model can be linearly predicted from the others with a substantial degree of accuracy.*" Essentially, this means that an input variable (or multiple variables) is highly correlated with another input variable, to the extent that their relationship is virtually linearly dependent. This can cause numerous issues with respect to the regression analysis including: 
+As defined by <a href="https://en.wikipedia.org/wiki/Multicollinearity" target="_blank">Wikipedia</a>, "*multicollinearity (also collinearity) is a phenomenon in which one predictor variable in a multiple regression model can be linearly predicted from the others with a substantial degree of accuracy.*" Essentially, this means that an input variable (or multiple variables) is highly correlated with another input variable, to the extent that their relationship is virtually linearly dependent. This can cause numerous issues with respect to the regression analysis, most notably causing: 
 
 <ul>
     <li>Inflated standard error</li>
-    <li>Non-unique solutions for the coefficients</li>
-    <li>Uninterpretable/Unstable coefficients</li>
+    <li>Uninterpretable + Unstable coefficients</li>
 </ul>
 
 All of these issues will be explained in the following 3 sections.
@@ -59,7 +58,56 @@ this means that with multicollinearity, $D^{-1}$ must have very large values. Th
 <br>
 <br>
 
-#### **Non-unique solutions:**
+#### **Uninterpretable + Unstable coefficients:**
 
-Next
 
+
+### **Intuition behind the instability:**
+
+It might be a little difficult to digest exactly why the coefficients become highly unstable from the above explanation. To help give a visual aspect to the problem of collinearity, the following simulation was created to replicate the effects, and issues that arise with collinear features.
+
+```{r, results='hide', message=FALSE, warning = FALSE}
+# installing packages
+#install.packages("plotly", repos = "http://cran.us.r-project.org")
+
+library(tidyverse)
+library(plotly)
+```
+
+
+```{r, collapse = FALSE, results="hold"}
+set.seed(1)
+
+artificial_data <- data.frame(x1 = seq(1, 1000)) %>%
+    mutate(x2 = x1 + rnorm(1000, 0, 1), 
+           y = (x1 + x2 + runif(1000, 0, 500))/4) 
+
+artificial_data %>%
+    cor()
+
+#change the values inside of slice to subset the data differently (this will drastically change the coefficients of x1 and x2 since they are colinear)
+lm <- lm(y ~ x1 + x2, data = slice(artificial_data, 200:700))
+lm
+```
+
+
+```{r, collapse = FALSE, results="hold"}
+grid <- expand_grid(x1 = seq(0, 1000, by = 200), x2 = seq(0, 1000, by = 200)) %>%
+    mutate(preds = predict(lm, newdata = data.frame(x1, x2))) %>%
+    pivot_wider(names_from = x1, values_from = preds) %>% 
+    select(-1) %>%  
+    as.matrix()
+
+fig <- plot_ly(mtcars, x = ~artificial_data$x1, y = ~artificial_data$x2, z = ~artificial_data$y, alpha = 0.25)
+fig <- fig %>% add_markers()
+fig <- fig %>% layout(scene = list(xaxis = list(title = 'x1'),
+                     yaxis = list(title = 'x2'),
+                     zaxis = list(title = 'y', nticks = 5, range = c(0,1000))))
+
+p2 <- add_trace(p = fig,
+                z = grid,
+                x = seq(0, 1000, by = 200),
+                y = seq(0, 1000, by = 200),
+                type = "surface")
+p2
+```
