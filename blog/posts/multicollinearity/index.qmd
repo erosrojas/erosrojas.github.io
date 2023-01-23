@@ -4,14 +4,16 @@ author: "Eros Rojas"
 date: "2023-01-08"
 categories: [R, Statistics]
 image: "colinear.jpg"
-
 format:
   html:
     code-fold: show
     code-summary: "Show the code"
     code-tools: true
     code-overflow: scroll
+server: shiny
 ---
+
+
 
 ## **An intuitive visualization of collinearity**
 Visualized in 3 dimensions, with the help of plotly.
@@ -68,7 +70,6 @@ It might be a little difficult to digest exactly why the coefficients become hig
 
 ```{r, results='hide', message=FALSE, warning = FALSE}
 # installing packages
-#install.packages("plotly", repos = "http://cran.us.r-project.org")
 
 library(tidyverse)
 library(plotly)
@@ -84,30 +85,37 @@ artificial_data <- data.frame(x1 = seq(1, 1000)) %>%
 
 artificial_data %>%
     cor()
-
-#change the values inside of slice to subset the data differently (this will drastically change the coefficients of x1 and x2 since they are colinear)
-lm <- lm(y ~ x1 + x2, data = slice(artificial_data, 200:700))
-lm
 ```
 
 
 ```{r, collapse = FALSE, results="hold"}
+#change the values inside of slice to subset the data differently (this will drastically change the coefficients of x1 and x2 since they are colinear)
+lm <- lm(y ~ x1 + x2, data = slice(artificial_data, 200:700))
+lm
+
 grid <- expand_grid(x1 = seq(0, 1000, by = 200), x2 = seq(0, 1000, by = 200)) %>%
     mutate(preds = predict(lm, newdata = data.frame(x1, x2))) %>%
     pivot_wider(names_from = x1, values_from = preds) %>% 
     select(-1) %>%  
     as.matrix()
 
-fig <- plot_ly(mtcars, x = ~artificial_data$x1, y = ~artificial_data$x2, z = ~artificial_data$y, alpha = 0.25)
+fig <- plot_ly(artificial_data, x = ~artificial_data$x1, y = ~artificial_data$x2, z = ~artificial_data$y, alpha = 0.25)
 fig <- fig %>% add_markers()
 fig <- fig %>% layout(scene = list(xaxis = list(title = 'x1'),
                      yaxis = list(title = 'x2'),
                      zaxis = list(title = 'y', nticks = 5, range = c(0,1000))))
 
-p2 <- add_trace(p = fig,
+fig <- add_trace(p = fig,
                 z = grid,
                 x = seq(0, 1000, by = 200),
                 y = seq(0, 1000, by = 200),
                 type = "surface")
-p2
+fig
 ```
+
+
+::: {.border layout-ncol="1"}
+```{=html}
+ <iframe id="example1" src="https://gallery.shinyapps.io/goog-trend-index/" style="border: none; width: 100%; height: 500px" frameborder="0"></iframe>
+```
+:::

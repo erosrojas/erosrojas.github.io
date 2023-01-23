@@ -1,0 +1,14 @@
+name: test
+title:
+username:
+account: erosrojas
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 8098583
+bundleId: 6762364
+url: https://erosrojas.shinyapps.io/test/
+when: 1674447654.2267
+lastSyncTime: 1674447654.22671
+quarto_version: 0.9.654
+quarto_engines: jupyter
+serverRender: FALSE
