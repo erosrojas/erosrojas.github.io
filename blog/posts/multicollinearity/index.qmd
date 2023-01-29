@@ -91,7 +91,7 @@ artificial_data %>%
 ```{r, collapse = FALSE, results="hold"}
 #change the values inside of slice to subset the data differently (this will drastically change the coefficients of x1 and x2 since they are colinear)
 lm <- lm(y ~ x1 + x2, data = slice(artificial_data, 200:700))
-lm
+print(lm)
 
 grid <- expand_grid(x1 = seq(0, 1000, by = 200), x2 = seq(0, 1000, by = 200)) %>%
     mutate(preds = predict(lm, newdata = data.frame(x1, x2))) %>%
@@ -116,6 +116,6 @@ fig
 
 ::: {.border layout-ncol="1"}
 ```{=html}
- <iframe id="example1" src="https://gallery.shinyapps.io/goog-trend-index/" style="border: none; width: 100%; height: 500px" frameborder="0"></iframe>
+ <iframe id="example1" src="https://gallery.shinyapps.io/goog-trend-index/" style="border: none; width: 100%; height: 600px" frameborder="0"></iframe>
 ```
 :::
