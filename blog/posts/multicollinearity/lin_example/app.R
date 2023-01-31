@@ -22,7 +22,7 @@ ui <- fluidPage(
                 min = 1,
                 max = 1000,
                 value = c(400,600), 
-                animate = animationOptions(interval = 10, loop = TRUE)),
+                animate = animationOptions(interval = 50, loop = TRUE)),
             tableOutput(outputId = "coefficients")
         ),
         mainPanel(
@@ -43,31 +43,31 @@ server <- function(input, output) {
         mutate(x2 = x1 + rnorm(1000, 0, 1), 
                 y = (x1 + x2 + runif(1000, 0, 100))/4)
 
-    
-    artificial_data %>%
-        cor()
-
-    output$distPlot <- renderPlotly({
+    # artificial_data %>%
+    #     cor()
 
         dataInput <- reactive({ 
-            lm(y ~ x1 + x2, data = slice(artificial_data, input$range[1]:input$range[2]))
+        plot_ly(artificial_data, x = ~artificial_data$x1, y = ~artificial_data$x2, z = ~artificial_data$y, alpha = 0.25) %>%
+            add_markers() %>%
+            layout(scene = list(xaxis = list(title = 'x1', range = c(0,1000)),
+                yaxis = list(title = 'x2', range = c(0,1000)),
+                zaxis = list(title = 'y', range = c(0,1000)), 
+                aspectmode = 'cube'), 
+                title = "\n Collinear features with regression plane overlaid (panning enabled)")
+        
         })
+    # add colour, labels, and deploy
+    output$distPlot <- renderPlotly({
 
-        fig <- plot_ly(artificial_data, x = ~artificial_data$x1, y = ~artificial_data$x2, z = ~artificial_data$y, alpha = 0.25)
-        fig <- fig %>% add_markers()
-        fig <- fig %>% layout(scene = list(xaxis = list(title = 'x1', range = c(0,1000)),
-                        yaxis = list(title = 'x2', range = c(0,1000)),
-                        zaxis = list(title = 'y', range = c(0,1000)), 
-                        aspectmode = 'cube'), 
-                        title = "\n Collinear features with regression plane overlaid")
+        lm <- lm(y ~ x1 + x2, data = slice(artificial_data, input$range[1]:input$range[2]))
 
         grid <- expand_grid(x1 = seq(0, 1000, by = 200), x2 = seq(0, 1000, by = 200)) %>% 
-            mutate(preds = predict(dataInput(), newdata = data.frame(x1, x2))) %>%
+            mutate(preds = predict(lm, newdata = data.frame(x1, x2))) %>%
             pivot_wider(names_from = x1, values_from = preds) %>% 
             select(-1) %>%  
             as.matrix()
 
-        fig <- add_trace(p = fig,
+        fig <- add_trace(p = dataInput(),
                         z = grid,
                         x = seq(0, 1000, by = 200),
                         y = seq(0, 1000, by = 200),
