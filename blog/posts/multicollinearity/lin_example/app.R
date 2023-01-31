@@ -1,6 +1,7 @@
 library(tidyverse)
 library(shiny)
 library(plotly)
+library(broom)
 
 # Define UI for app that draws a histogram ----
 ui <- fluidPage(
@@ -56,7 +57,7 @@ server <- function(input, output) {
                 title = "\n Collinear features with regression plane overlaid (panning enabled)")
         
         })
-    # add colour, labels, and deploy
+    # add colour, and deploy
     output$distPlot <- renderPlotly({
 
         lm <- lm(y ~ x1 + x2, data = slice(artificial_data, input$range[1]:input$range[2]))
@@ -76,8 +77,10 @@ server <- function(input, output) {
     })
 
     output$coefficients <- renderTable({
-        Coefficients <- lm(y ~ x1 + x2, data = slice(artificial_data, input$range[1]:input$range[2]))$coefficients
-        Coefficients
+        lm <- tidy(lm(y ~ x1 + x2, data = slice(artificial_data, input$range[1]:input$range[2]))) %>%
+            select(term, estimate) %>%
+            rename(Coefficient = term, Magnitude = estimate)
+        lm
     })
 
 }
