@@ -22,15 +22,15 @@ ui <- fluidPage(
                 label = "Range of input",
                 min = 1,
                 max = 1000,
-                value = c(400,600), 
-                animate = animationOptions(interval = 50, loop = TRUE)),
+                value = c(450,550), 
+                animate = animationOptions(interval = 500, loop = TRUE)),
             tableOutput(outputId = "coefficients")
         ),
         mainPanel(
             # h3(strong(), align = "center"),
             plotlyOutput(outputId = "distPlot", 
                 width = "100%", 
-                height = "600px")
+                height = "800px")
         )
     )
 )
@@ -57,7 +57,7 @@ server <- function(input, output) {
                 title = "\n Collinear features with regression plane overlaid (panning enabled)")
         
         })
-    # add colour, and deploy
+
     output$distPlot <- renderPlotly({
 
         subset <- slice(artificial_data, input$range[1]:input$range[2])
