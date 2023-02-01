@@ -49,18 +49,19 @@ server <- function(input, output) {
 
         dataInput <- reactive({ 
         plot_ly(artificial_data, x = ~artificial_data$x1, y = ~artificial_data$x2, z = ~artificial_data$y, alpha = 0.25) %>%
-            add_markers() %>%
+            add_markers(name="Full range of data") %>%
             layout(scene = list(xaxis = list(title = 'x1', range = c(0,1000)),
-                yaxis = list(title = 'x2', range = c(0,1000)),
-                zaxis = list(title = 'y', range = c(0,1000)), 
-                aspectmode = 'cube'), 
+                                yaxis = list(title = 'x2', range = c(0,1000)),
+                                zaxis = list(title = 'y', range = c(0,1000)), 
+                                aspectmode = 'cube'), 
                 title = "\n Collinear features with regression plane overlaid (panning enabled)")
         
         })
     # add colour, and deploy
     output$distPlot <- renderPlotly({
 
-        lm <- lm(y ~ x1 + x2, data = slice(artificial_data, input$range[1]:input$range[2]))
+        subset <- slice(artificial_data, input$range[1]:input$range[2])
+        lm <- lm(y ~ x1 + x2, data = subset)
 
         grid <- expand_grid(x1 = seq(0, 1000, by = 200), x2 = seq(0, 1000, by = 200)) %>% 
             mutate(preds = predict(lm, newdata = data.frame(x1, x2))) %>%
@@ -72,8 +73,21 @@ server <- function(input, output) {
                         z = grid,
                         x = seq(0, 1000, by = 200),
                         y = seq(0, 1000, by = 200),
-                        type = "surface")
-        fig
+                        type = "surface", 
+                        text = "Regression plane", 
+                        colorbar = list(title="Height of regression plane")) %>%
+                add_trace(subset, 
+                        x = ~subset$x1, 
+                        y = ~subset$x2, 
+                        z = ~subset$y, 
+                        alpha = 1, 
+                        marker=list(color='red'), 
+                        mode = "markers", 
+                        type = "scatter3d", 
+                        name="Data used for plane")
+
+        
+        fig 
     })
 
     output$coefficients <- renderTable({
