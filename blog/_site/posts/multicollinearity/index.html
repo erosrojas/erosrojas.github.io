@@ -250,9 +250,9 @@ x2 0.9999936 1.0000000 0.9699606
 y  0.9699297 0.9699606 1.0000000</code></pre>
 </div>
 </div>
-<iframe id="interactive" src="https://erosrojas.shinyapps.io/lin_example/" style="border: none; width: 1400px; height: 800px" frameborder="0">
+<iframe id="interactive" src="https://erosrojas.shinyapps.io/lin_example/" style="border: none; width: 1200px; height: 900px" frameborder="0">
 </iframe>
-<p>
+<p>Continued 
 <script type="application/shiny-prerendered" data-context="server-extras">
 ojs_define <- function(..., .session = shiny::getDefaultReactiveDomain()) {
   quos <- rlang::enquos(...)
@@ -514,12 +514,19 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>artificial_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x1 =</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">1000</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">x2 =</span> x1 <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="dv">0</span>, <span class="dv">1</span>), </span>
 <span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> (x1 <span class="sc">+</span> x2 <span class="sc">+</span> <span class="fu">runif</span>(<span class="dv">1000</span>, <span class="dv">0</span>, <span class="dv">500</span>))<span class="sc">/</span><span class="dv">4</span>) </span>
-<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>artificial_data <span class="sc">%&gt;%</span></span>
-<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cor</span>()</span>
-<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;iframe</span> <span class="er">id</span><span class="ot">=</span><span class="st">"interactive"</span> <span class="er">src</span><span class="ot">=</span><span class="st">"https://erosrojas.shinyapps.io/lin_example/"</span> <span class="er">style</span><span class="ot">=</span><span class="st">"border: none; width: 1400px; height: 800px"</span> <span class="er">frameborder</span><span class="ot">=</span><span class="st">"0"</span><span class="kw">&gt;&lt;/iframe&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a><span class="co"># next thing to try is fluidrow layout to try and stack the things and make for better fit</span></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>artificial_data <span class="sc">%&gt;%</span></span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cor</span>()</span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;iframe</span> <span class="er">id</span><span class="ot">=</span><span class="st">"interactive"</span> <span class="er">src</span><span class="ot">=</span><span class="st">"https://erosrojas.shinyapps.io/lin_example/"</span> <span class="er">style</span><span class="ot">=</span><span class="st">"border: none; width: 1200px; height: 900px"</span> <span class="er">frameborder</span><span class="ot">=</span><span class="st">"0"</span><span class="kw">&gt;&lt;/iframe&gt;</span></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>Continued</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

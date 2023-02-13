@@ -15,8 +15,13 @@ ui <- fluidPage(
           font-family: "Arial";
         }')
     )),
-    sidebarLayout(
-        sidebarPanel(id = "sidebar",
+
+    plotlyOutput(outputId = "distPlot", 
+                    width = "70%", 
+                    height = "550px"),
+
+    fluidRow(
+        column(7, align = "center",
             helpText("Choose a subset of the data to display (range refers to the indices of the rows)."),
             sliderInput(inputId = "range",
                 label = "Range of input",
@@ -26,12 +31,6 @@ ui <- fluidPage(
                 animate = animationOptions(interval = 500, loop = TRUE)),
             tableOutput(outputId = "coefficients")
         ),
-        mainPanel(
-            # h3(strong(), align = "center"),
-            plotlyOutput(outputId = "distPlot", 
-                width = "100%", 
-                height = "800px")
-        )
     )
 )
 
@@ -54,7 +53,7 @@ server <- function(input, output) {
                                 yaxis = list(title = 'x2', range = c(0,1000)),
                                 zaxis = list(title = 'y', range = c(0,1000)), 
                                 aspectmode = 'cube'), 
-                title = "\n Collinear features with regression plane overlaid (panning enabled)")
+                title = "\n Collinear features with regression plane overlaid (panning enabled) \n")
         
         })
 
