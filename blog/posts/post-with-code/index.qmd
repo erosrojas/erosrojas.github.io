@@ -1,8 +1,8 @@
 ---
-title: "My Old DSCI-100 Project"
+title: "My First Data Science Project"
 author: "Eros Rojas"
 date: "2022-07-30"
-categories: [R, DSCI-100]
+categories: [R, Projects]
 image: "ancient.jpg"
 
 format:
@@ -13,18 +13,18 @@ format:
     code-overflow: scroll
 ---
 
-## **Breaking down my old DSCI-100 project**
+## **Breaking down my first data science project**
 TLDR: Do not assume anything of your data. Often times you will be wrong.
 
 <br>
 ![](data-pic.jpg)
 <br>
 
-Back when I took DSCI-100, I was very new to the data science and statistical modeling world. I was vastly unaware of the absurd number of specialized algorithms created for basically any and all types of problems. 
+Back when I was in my first year of university, I was very new to the data science and statistical modeling world. I was vastly unaware of the absurd number of specialized algorithms created for basically any and all types of problems. 
 
 This was one of my first full data science reports, and as a result of my previously limited knowledge, there are numerous aspects of the report that are misleading, or flat out misrepresentative of reality. I wish to make this post as a point of progression to see how much I have learned in the past two years, and to be able to recognize what types of mistakes data science beginners generally make. Think of it like a video game 'remaster', except the difference being that nobody asked for it.
 
-Below you will find my DSCI-100 final report, but with the added bonus of italicized annotations alongside all of the questionable statements and pieces of code that were written. 
+Below you will find my first data science project, but with the added bonus of italicized annotations alongside all of the questionable statements and pieces of code that were written. 
 
 <br>
 <br>
@@ -75,8 +75,6 @@ We begin by selecting the columns which will be useful for exploratory analysis.
 
 We restricted the observations to those taken past September 1st 2020 – to ensure recent data and prevent overplotting – and before November 16th 2020, since Billy was booking his flight on November 17th. Therefore, the model will be unable to ‘cheat’ by seeing the data that Billy used to make his prediction/decision.
 
-*<span style="color:#b30000">incomplete, will be back another day to finish</span>*
-
 ```{r, collapse = FALSE, results="hold"}
 # this is our exploratory data table, depicting our predictors of interest
 newdata <- data %>%
@@ -89,3 +87,5 @@ newdata <- data %>%
 #strong("Table 2: Preliminary data filtering")
 head(newdata)
 ```
+
+*<span style="color:#b30000">incomplete, post has been placed on the backburner. will be back another day to finish. feel free to check out my newest post <a href="https://erosrojas.github.io/blog/_site/posts/multicollinearity/">here</a></span>*

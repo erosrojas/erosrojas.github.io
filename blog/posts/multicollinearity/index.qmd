@@ -17,7 +17,7 @@ server: shiny
 
 
 ## **An intuitive visualization of collinearity**
-Visualized in 3 dimensions, with the help of plotly.
+Visualized in 3 dimensions, with the help of plotly. [(Skip to the interactive example)](#intuition-behind-the-instability)
 
 <br>
 ![](3d.jpg)
@@ -57,42 +57,57 @@ It is clear that $X^T X$ must be a square matrix, therefore, it can be diagonali
 $$X^T X = PDP^{-1}$$
 where $P$ is an invertible matrix containing linearly independent eigenvectors of $X^T X$, and $D$ is a diagonal matrix containing the eigenvalues of $X^T X$ (you can read more about matrix diagonalization <a href="https://www.statlect.com/matrix-algebra/matrix-diagonalization" target="_blank">here</a>). Most notably, the product of the entries of $D$ (the eigenvalues) are equal to the determinant of $D$. When multicollinearity is present, $X^T X$ becomes 'nearly singular' (a matrix which has a determinant very close to $0$, and who's columns are nearly linearly dependent. For reference, a non-singular matrix is linearly independent, and a singular matrix is linearly dependent and has a determinant of $0$). In other words, this means that one or more of the eigenvalues of $D$ must be very close to $0$, or in fact $0$. Given the inverse of the diagonalized matrix above;
 $$(X^T X)^{-1} = PD^{-1}P^{-1}$$
-this means that with multicollinearity, $D^{-1}$ must have very large values. This is due to the fact that when the inverse of a matrix is taken, its determinant is essentially divided out from each element of the resulting matrix (this is an oversimplification, look into <a href="https://en.wikipedia.org/wiki/Adjugate_matrix" target="_blank">adjugate matrices</a> if you are interested). This causes $(X^T X)^{-1}$ to subsequently also have very large values, which finally causes $\mathrm{Var}(w)$ to be very large. This shows why multicollinearity severely inflates the standard error of the coefficients.
+this means that with multicollinearity, $D^{-1}$ must have very large values. This is due to the fact that when the inverse of a matrix is taken, its determinant is essentially divided out from each element of the resulting matrix (this is an oversimplification, look into <a href="https://en.wikipedia.org/wiki/Adjugate_matrix" target="_blank">adjugate matrices</a> if you are interested). This causes $(X^T X)^{-1}$ to subsequently also have very large values, which finally causes $\mathrm{Var}(w)$ to be very large. This large variance is what causes multicollinearity to severely inflate the standard error of the coefficients.
 <br>
 <br>
 
 #### **Uninterpretable + Unstable coefficients:**
-
-
+In addition to artificially inflating the standard error, collinearity is notorious for causing coefficients to become both uninterpretable, and unstable. To address the first concern, lets define a linear model with two (highly correlated) features: 
+$$ \hat{y} = b + x_1 w_1 + x_2 w_2 + \epsilon$$
+In the case that $x_1$ and $x_2$ are highly correlated, they can subsequently be described by one another, namely $x_1 \approx x_2$ (assuming $w_1, w_2 > 0$). If this is the case, then
+\begin{align*} 
+    \hat{y} &= b + x_1 w_1 + x_2 w_2 + \epsilon \\
+    &\approx b + x_1 w_1 + x_1 w_2 + \epsilon \\
+    &\approx b + x_1 (w_1 + w_2) + 0 \cdot x_2 + \epsilon
+\end{align*}
+If $x_1$ and $x_2$ are perfectly correlated, then the weight of $x_2$ can be entirely transferred to $x_1$ (or vise versa) thus leaving $x_2$ with a coefficient of $0$. This may or may not affect the output/predictions of the model, however it does affect how the coefficients are interpreted. For example, consider $x_1$ to be the square footage of a home, $x_2$ to be the number of rooms, and $\hat{y}$ to be the sell price of the given home. It is clear that $x_1$ and $x_2$ will be collinear (not perfectly collinear though since $x_2$ is discrete), therefore when calculating the coefficients of $w_1$ and $w_2$, getting a result near $0$ for $w_2$ would make no sense as increasing the number of rooms of a home should surely increase the sale price. 
+<br>
+<br>
+Not only can it cause coefficients to zero out, it can also cause coefficients to drastically change. Consider the same initial equation as above:
+\begin{align*} 
+    \hat{y} &= b + x_1 w_1 + x_2 w_2 + \epsilon \\
+    &= b + x_1 w_1 + x_1 w_2 + \epsilon \\
+    &= b + x_1 (w_1 + w_2) + 0 \cdot x_2 + \epsilon \\
+    &= b + x_1 (w_1 + 10w_2) - 9w_2 x_2 + \epsilon
+\end{align*}
+Even though the coefficients are now out-of-wack with respect to the context of the problem (house prices), numerically they are equivalent to the initial linear model. $x_2$ now suggests that the number of rooms of a house has a negative relationship with the sale price of a house, which as we know is ridiculous. Likewise, there are an infinite number of combinations of $w_1$ and $w_2$ that satisfy the initial equation, since we now have an added degree of freedom in the feature matrix. That being said, the resulting values of $w_1$ and $w_2$ will depend on your data, and the severity of collinearity. This leads to the final main concern of multicollinearity: unstable coefficients.
 
 ### **Intuition behind the instability:**
 
-It might be a little difficult to digest exactly why the coefficients become highly unstable from the above explanation. To help give a visual aspect to the problem of collinearity, the following simulation was created to replicate the effects, and issues that arise with collinear features.
+If it was not clear enough above, the uninterpretability and instability of coefficients go hand-in-hand. As collinearity becomes perfect, the coefficients get more and more uninterpretable, and also get increasingly unstable. However, if you do not have a suitable background in linear algebra then it may still be unclear as to how exactly the instability affects the model output. To help give a visual aspect to the problem of collinearity, the following simulation was created to replicate the effects, and issues that arise with collinear features.
+<br>
+<br>
+Below is a 3D plot that represents the above linear model. $x_1$ and $x_2$ are (nearly) perfect collinear features (some noise was included otherwise $X$ would be singular), and $y$ represents the output of the linear regression model which in this case is a regression plane since we have two input features. The visualization is meant to showcase how sensitive the coefficients are when collinear features are present. There are 1000 data points that make up the data, and by changing the range of the indices that create the linear model, it is clear how much the coefficients change (as seen by the drastic flips of the regression plane). Generally, taking a subset of your data should not change the underlying linear relationship. However, with collinear features even the slightest changes in data can shift the regression weights, as seen from the equations above. 
+<br>
+<br>
+Try playing around with the range of the input to see how much the coefficients change.
 
-```{r, results='hide', message=FALSE, warning = FALSE}
-# installing packages
-
+```{r, collapse = FALSE, results="hold", warning = FALSE, message=FALSE, results='hide'}
+# warning = FALSE
+# results='hide'
+# message=FALSE
 library(tidyverse)
-library(plotly)
-```
 
-
-```{r, collapse = FALSE, results="hold"}
 set.seed(1)
 
 artificial_data <- data.frame(x1 = seq(1, 1000)) %>%
     mutate(x2 = x1 + rnorm(1000, 0, 1), 
            y = (x1 + x2 + runif(1000, 0, 500))/4) 
-# next thing to try is fluidrow layout to try and stack the things and make for better fit
 
 artificial_data %>%
     cor()
 ```
 
+<iframe id="interactive" src="https://erosrojas.shinyapps.io/lin_example/" style="border: none; width: 1200px; height: 850px" frameborder="0"></iframe>
 
-
- 
-<iframe id="interactive" src="https://erosrojas.shinyapps.io/lin_example/" style="border: none; width: 1200px; height: 900px" frameborder="0"></iframe>
-
-
-Continued
+Hopefully this was able to shine some light as to what collinearity is, and the negative implications of collinear features within your data.
