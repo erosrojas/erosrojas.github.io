@@ -20,11 +20,11 @@ TLDR: Do not assume anything of your data. Often times you will be wrong.
 ![](data-pic.jpg)
 <br>
 
-Back when I was in my first year of university, I was very new to the data science and statistical modeling world. I was vastly unaware of the absurd number of specialized algorithms created for basically any and all types of problems. 
+Back when I was in my first year of university, I was very new to the data science and statistical modeling world. I was vastly unaware of the number of specialized algorithms created for basically any, and all types of applications. 
 
-This was one of my first full data science reports, and as a result of my previously limited knowledge, there are numerous aspects of the report that are misleading, or flat out misrepresentative of reality. I wish to make this post as a point of progression to see how much I have learned in the past two years, and to be able to recognize what types of mistakes data science beginners generally make. Think of it like a video game 'remaster', except the difference being that nobody asked for it.
+This was one of my first full data science projects, and as a result of my limited knowledge, there are numerous aspects of the report that are misleading or flat out incorrect. I wish to make this post as a point of progression to see how much I have learned in the past two years, and to be able to recognize what types of mistakes data science beginners generally make.
 
-Below you will find my first data science project, but with the added bonus of italicized annotations alongside all of the questionable statements and pieces of code that were written. 
+Below you will find my first data science project, but with the added bonus of italicized and coloured annotations alongside all of the questionable and dubious assumptions that were made. 
 
 <br>
 <br>
