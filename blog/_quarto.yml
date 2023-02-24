@@ -9,7 +9,7 @@ website:
       - icon: github
         href: https://github.com/erosrojas
       - icon: card-list
-        href: https://erosrojas.github.io/test.html
+        href: https://github.com/erosrojas/erosrojas.github.io/blob/master/Eros_Resume.pdf
 format:
   html:
     theme: flatly
